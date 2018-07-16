@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="SendFile" xmlns="http://jbpm.org/4.4/jpdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                         xsi:schemaLocation="http://jbpm.org/4.4/jpdl http://jbpm.org/4.4/jpdl/jpdl-4.4.xsd">
+   <start g="38,74,48,48" name="start1">
+      <transition to="部门内部审核"/>
+   </start>
+   <end g="515,605,48,48" name="end1"/>
+   <task assignee="#{depAuditUser}" g="128,70,92,52" name="部门内部审核">
+   		<description>
+   			请#{depAuditUser}对#{startUserId}的发文申请进行 部门内审
+   		$$#{webctx}/sendFileAuditAction.action?wm.submitFlag=toDepAudit&amp;requestUuid=#{requestUuid}
+   		</description>
+      <transition to="exclusive1"/>
+   </task>
+   <decision g="151,140,48,48" name="exclusive1">
+   
+      <transition g="-39,-20" name="toUpdate" to="返回修改">
+      	<condition expr="#{depAuditResult == 'needUpdate'}"/>
+      </transition>
+      <transition g="-120,-15" name="toDepMangerAudit" to="部门领导核稿">
+      	<condition expr="#{depAuditResult == 'needDepMangerAudit'}"/>
+      </transition>
+   </decision>
+   <task assignee="#{startUserId}" g="291,136,92,52" name="返回修改">
+   		<description>
+   			请#{startUserId}对你的发文申请单 进行修改，单号是#{requestUuid}
+   		$$#{webctx}/sendFileAuditAction.action?wm.submitFlag=toMyUpdate&amp;requestUuid=#{requestUuid}
+   		</description>
+      <transition g="-42,-18" name="toDispose" to="作废">
+      </transition>
+      <transition g="-9,-21" name="toDepAudit" to="部门内部审核"/>
+   </task>
+   <task assignee="#{depMangerAuditUser}" g="130,219,92,52" name="部门领导核稿">
+   		<description>
+   			请#{depMangerAuditUser}对#{startUserId}的发文申请进行 部门领导审核
+   		$$#{webctx}/sendFileAuditAction.action?wm.submitFlag=toDepManagerAudit&amp;requestUuid=#{requestUuid}
+   		</description>
+      <transition to="exclusive2"/>
+   </task>
+   <java class="com.yhz.oa.filemgr.sendfile.forprocess.DisposeFile" g="493,136,92,52" method="dispose" name="作废">
+      <transition to="end1"/>
+   </java>
+   <decision g="149,299,48,48" name="exclusive2">
+   		<handler class="com.yhz.oa.filemgr.sendfile.forprocess.DepMangerSignDecision" />
+      <transition g="1,-56" name="toDepMangerSign" to="部门领导会签"/>
+      <transition g="-52,-16" name="toCheck" to="文书核稿"/>
+   </decision>
+   <custom class="com.yhz.oa.filemgr.sendfile.forprocess.DepManagerSign" g="301,294,92,52" name="部门领导会签">
+   		<description>
+   			请对#{startUserId}的发文申请进行 部门领导会签
+   		$$#{webctx}/sendFileAuditAction.action?wm.submitFlag=toDepManagerSign&amp;requestUuid=#{requestUuid}
+   		</description>
+      <transition to="部门领导核稿"/>
+   </custom>
+   <task assignee="#{checkUser}" g="128,384,92,52" name="文书核稿">
+   	<description>
+   			请#{checkUser}对#{startUserId}的发文申请进行 文书核稿
+   		$$#{webctx}/sendFileAuditAction.action?wm.submitFlag=toCheck&amp;requestUuid=#{requestUuid}
+   		</description>
+      <transition to="公司领导签发"/>
+   </task>
+   <task g="129,454,92,52" name="公司领导签发">
+      <transition to="exclusive3"/>
+   </task>
+   <decision g="151,528,48,48" name="exclusive3">
+   <handler class="com.yhz.oa.filemgr.sendfile.forprocess.DepMangerSignDecision" />
+      <transition g="-44,-28" name="toCompanySign" to="公司领导会签"/>
+      <transition g="-64,-15" name="toFileNum" to="公司文书编号"/>
+   </decision>
+   <custom class="com.yhz.oa.filemgr.sendfile.forprocess.DepManagerSign" g="300,525,92,52" name="公司领导会签">
+      <transition to="exclusive4"/>
+   </custom>
+   <task g="126,606,92,52" name="公司文书编号">
+      <transition to="打印"/>
+   </task>
+   <decision g="322,608,48,48" name="exclusive4">
+   <handler class="com.yhz.oa.filemgr.sendfile.forprocess.DepMangerSignDecision" />
+      <transition g="-32,-23" name="toFileNum" to="公司文书编号"/>
+      <transition to="end1"/>
+   </decision>
+   <task g="128,679,92,52" name="打印">
+      <transition to="分发"/>
+   </task>
+   <task g="124,756,92,52" name="分发">
+      <transition to="end1"/>
+   </task>
+</process>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+    <class name="com.yhz.oa.filemgr.sendfile.sendfileaudit.vo.AuditRecordModel" table="tbl_auditRecord" lazy="true" dynamic-update="true" >
+    	<id name="uuid">
+    		<generator class="assigned"/>
+    	</id>
+		<property name="auditUser"/>
+		<property name="auditTime"/>
+		<property name="requestUuid"/>
+		<property name="auditResult"/>
+		<property name="auditDesc"/>
+		<property name="state"/>
+		<property name="signNum"/>
+		<property name="auditType"/>
+	</class>
+</hibernate-mapping>

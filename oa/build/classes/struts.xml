@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true"/>
+    <constant name="struts.locale" value="zh_CN"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.objectFactory" value="spring"/>
+    
+    <package name="default" extends="struts-default">
+    	<interceptors>
+    		<interceptor name="LoginChecker" class="com.yhz.framework.login.LoginInterceptor"/>
+    		<interceptor-stack name="myStack">
+    			<interceptor-ref name="LoginChecker"></interceptor-ref>
+    			<interceptor-ref name="defaultStack"/>
+    		</interceptor-stack>
+    	</interceptors>
+		
+		<default-interceptor-ref name="myStack"/>
+		
+		<global-results>
+    		<result name="toLogin">/login.jsp</result>
+    	</global-results>  
+        <action name="sendFileRequestAction" class="sendFileRequestAction">
+   	        <result name="success">/sendfilerequest/success.jsp</result> 
+   	        <result name="toList">/sendfilerequest/list.jsp</result>
+   	        <result name="toAdd">/sendfilerequest/add.jsp</result>
+   	        <result name="toUpdate">/sendfilerequest/update.jsp</result>
+   	        <result name="delete">/sendfilerequest/list.jsp</result>
+   	        <result name="toQuery">/sendfilerequest/query.jsp</result>
+   	        
+   	        <result name="toDraft">/sendfilerequest/draft.jsp</result>
+   	        <result name="toDraftQuery">/sendfilerequest/draftQuery.jsp</result>
+   	        <result name="toDraftList">/sendfilerequest/draftList.jsp</result>
+   	        <result name="toDraftUpdate">/sendfilerequest/draftUpdate.jsp</result>
+   	        <result name="viewFile" type="stream"></result>
+   	        
+   	        <result name="toUpdateList">/sendfilerequest/updateList.jsp</result>
+   	        <result name="toUpdateUpdate">/sendfilerequest/updateUpdate.jsp</result>
+        </action>
+        <action name="deployAction" class="deployAction">
+        	<result name="success">/workflow/success.jsp</result>
+        	<result name="toPDList">/workflow/listPD.jsp</result>
+        	<result name="toPIList">/workflow/piList.jsp</result>
+        	<result name="noAuthority">/usermgr/noAuthority.jsp</result>
+        </action>
+         <action name="wfAction" class="wfAction">
+        	<result name="toMyWorkList">/workflow/myworklist.jsp</result>
+        </action>
+        <action name="sendFileAuditAction" class="sendFileAuditAction">
+        	<result name="toDepAudit">/sendfilerequestaudit/depAudit.jsp</result>
+        	<result name="toMyUpdate">/sendfilerequestaudit/userUpdate.jsp</result>
+        	<result name="success">/sendfilerequestaudit/success.jsp</result>
+        	<result name="toDepManagerAudit">/sendfilerequestaudit/depManagerAudit.jsp</result>
+        	<result name="toDepManagerSign">/sendfilerequestaudit/depManagerSign.jsp</result>
+        	<result name="toCheck">/sendfilerequestaudit/check.jsp</result>
+        	
+			<result name="toDepAuditAjax">/sendfilerequestaudit/depAuditAjax.jsp</result>
+			<result name="toDepAuditAjax2" type="stream"></result>
+			<result name="toDepAuditAjax3" type="stream"></result>
+        </action>
+        <action name="userAction" class="userAction">
+        	<result name="toList">/usermgr/userList.jsp</result>
+   	        <result name="toAdd">/usermgr/reg.jsp</result>
+   	        <result name="toUserUpdate">/usermgr/userUpdate.jsp</result>
+   	        <result name="success">/usermgr/success.jsp</result>
+   	        <result name="loginSuccess">/index.html</result>
+   	        <result name="loginFail">/usermgr/loginFail.jsp</result>
+   	        <result name="noAuthority">/usermgr/noAuthority.jsp</result>
+        </action>
+	 </package>
+</struts>

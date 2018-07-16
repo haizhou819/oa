@@ -1,0 +1,261 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="../css/css.css" rel="stylesheet" type="text/css">
+<title></title>
+<style type=text/css>
+SCROLLBAR-FACE-COLOR
+:
+ 
+#9999CC
+;
+
+	
+SCROLLBAR-HIGHLIGHT-COLOR
+:
+ 
+#ffffff
+;
+ 
+SCROLLBAR-SHADOW-COLOR
+:
+ 
+#39867B
+;
+ 
+SCROLLBAR-3DLIGHT-COLOR
+:
+ 
+#39867B
+;
+ 
+SCROLLBAR-ARROW-COLOR
+:
+ 
+#330000
+;
+ 
+SCROLLBAR-TRACK-COLOR
+:
+ 
+#E1E1FF
+;
+ 
+SCROLLBAR-DARKSHADOW-COLOR
+:
+ 
+#ffffff
+;
+}
+table {
+	border: 0px;
+}
+
+td {
+	font: normal 12px 宋体;
+}
+
+img {
+	vertical-align: bottom;
+	border: 0px;
+}
+
+a {
+	font: normal 12px 宋体;
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #cc0000;
+	text-decoration: underline;
+}
+
+.sec_menu {
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	border-bottom: 1px solid white;
+	overflow: hidden;
+	background: #FFFFCC;
+}
+
+.menu_title {
+	
+}
+
+.menu_title span {
+	position: relative;
+	top: 2px;
+	left: 8px;
+	color: #39867B;
+	font-weight: bold;
+}
+
+.menu_title2 {
+	
+}
+
+.menu_title2 span {
+	position: relative;
+	top: 2px;
+	left: 8px;
+	color: #cc0000;
+	font-weight: bold;
+}
+</style>
+<SCRIPT language="javascript">
+	function showsubmenu(sid){
+		var ele;
+		//先关闭其他的
+		for(var i=1;i<10;i++){
+			ele = document.getElementById("submenu" + i);
+			if(ele!=null && i!=sid){
+				ele.style.display="none";
+			}
+		}
+		//显示点击的菜单
+		whichEl = document.getElementById("submenu" + sid);
+		if (whichEl.style.display == "none"){
+			whichEl.style.display="";
+		}else{
+			whichEl.style.display="none";
+		}
+		
+	}
+</SCRIPT>
+<BODY leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+	<table width=100% cellpadding=0 cellspacing=0 border=0 align=left>
+		<tr>
+			<td valign=top>
+				<table width="177" border="0" align=center cellpadding=0
+					cellspacing=0 bgcolor="#7EAAEB">
+					<tr>
+						<td width="177" height=30 valign=bottom>&nbsp;</td>
+					</tr>
+				</table>
+
+				<table width="177" height="0" align=center cellpadding=0
+					cellspacing=0 bgcolor="#D9E8FE">
+					<tr>
+						<td height="25" class="menu_title" id="menuTitle1"
+							style="cursor: hand;" onclick="showsubmenu(1)"
+							onmouseover="this.className='menu_title2';"
+							onmouseout="this.className='menu_title';"><span>公文管理</span></td>
+					</tr>
+					<tr>
+						<td height="0" id="submenu1" style="display: none">
+							<div class="sec_menu" style="width: 177">
+								<table cellpadding=0 cellspacing=0 align=center width=131>
+									<tr>
+										<td width="265" height=20><a
+											href="/oa/sendFileRequestAction.action?wm.submitFlag=toDraft"
+											target="mainFrame">公文拟稿</a></td>
+									</tr>
+									<tr>
+										<td width="265" height=20><a
+									        href="/oa/sendFileRequestAction.action?wm.submitFlag=toDraftList"
+											target="mainFrame">初稿列表</a></td>
+									</tr>
+									<tr>
+										<td width="265" height=20><a
+											href="/oa/sendFileRequestAction.action?wm.submitFlag=toUpdateList"
+											target="mainFrame">修改列表</a></td>
+									</tr>
+								</table>
+							</div>
+							<div style="width: 177">
+								<table cellpadding=0 cellspacing=0 align=center>
+									<tr>
+										<td height=10></td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+
+				<table width="177" height="0" align=center cellpadding=0 cellspacing=0 bgcolor="#D9E8FE">
+					<tr>
+						<td height="25" class="menu_title" id="menuTitle1"
+							style="cursor: hand;" onclick="showsubmenu(2)"
+							onmouseover="this.className='menu_title2';"
+							onmouseout="this.className='menu_title';"><span>流程管理</span></td>
+					</tr>
+					<tr>
+						<td height="0" id="submenu2" style="display: none">
+							<div class="sec_menu" style="width: 177">
+								<table cellpadding=0 cellspacing=0 align=center width=131>
+									<tr>
+										<td width="65" height=20><a
+											href="/oa/workflow/deploy.jsp" target="mainFrame">部署流程</a></td>
+									</tr>
+									<tr>
+										<td width="65" height=20><a
+											href="/oa/deployAction.action?submitFlag=viewPD"
+											target="mainFrame">流程列表</a></td>
+									</tr>
+									<tr>
+										<td width="65" height=20><a
+											href="/oa/deployAction.action?submitFlag=viewPI"
+											target="mainFrame">流程实例</a></td>
+									</tr>
+									<tr>
+										<td width="65" height=20><a
+											href="/oa/wfAction.action?wm.submitFlag=viewMyWorkList"
+											target="mainFrame">工作列表</a></td>
+									</tr>
+
+								</table>
+							</div>
+							<div style="width: 177">
+								<table cellpadding=0 cellspacing=0 align=center>
+									<tr>
+										<td height=10></td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+				
+				<table width="177" height="0" align=center cellpadding=0 cellspacing=0 bgcolor="#D9E8FE">
+					<tr>
+						<td height="25" class="menu_title" id="menuTitle1"
+							style="cursor: hand;" onclick="showsubmenu(3)"
+							onmouseover="this.className='menu_title2';"
+							onmouseout="this.className='menu_title';"><span>系统管理</span></td>
+					</tr>
+					<tr>
+						<td height="0" id="submenu3" style="display: none">
+							<div class="sec_menu" style="width: 177">
+								<table cellpadding=0 cellspacing=0 align=center width=131>
+									<tr>
+										<td width="265" height=20><a
+									        href="/oa/userAction.action?wm.submitFlag=toAdd"
+											target="mainFrame">添加用户</a></td>
+									</tr>
+									<tr>
+										<td width="265" height=20><a
+									        href="/oa/userAction.action?wm.submitFlag=toList"
+											target="mainFrame">用户信息</a></td>
+									</tr>
+									<tr>
+										<td width="265" height=20><a
+											href="/oa/wfAction.action?wm.submitFlag=viewMyWorkList"
+											target="mainFrame">权限管理</a></td>
+									</tr>
+
+								</table>
+							</div>
+							<div style="width: 177">
+								<table cellpadding=0 cellspacing=0 align=center>
+									<tr>
+										<td height=10></td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+</body>
+</html>

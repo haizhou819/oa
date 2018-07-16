@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"	 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<import resource="applicationContext-jbpm.xml"/>
+	<import resource="applicationContext-uuid.xml"/>
+	<import resource="applicationContext-attach.xml"/>
+	
+	<bean id="sfrDao" class="com.yhz.oa.filemgr.sendfile.sendfilerequest.dao.impl.H3Impl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sfrEbi" class="com.yhz.oa.filemgr.sendfile.sendfilerequest.business.ebo.SendFileRequestEbo">
+		<property name="dao" ref="sfrDao"></property>
+		<property name="uuidEbi" ref="uuidEbi"></property>
+		<property name="rs" ref="rs"></property>
+		<property name="es" ref="es"></property>
+	</bean>
+	<bean id="sendFileRequestAction" class="com.yhz.oa.filemgr.sendfile.sendfilerequest.web.action.SendFileRequestAction" scope="prototype">
+		<property name="ebi" ref="sfrEbi"></property>
+		<property name="attachEbi" ref="attachEbi"></property>
+	</bean>
+
+</beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+    <class name="com.yhz.oa.filemgr.sendfile.attach.vo.AttachModel" table="tbl_attach" lazy="true" dynamic-update="true" >
+    	<id name="uuid">
+    		<generator class="assigned"/>
+    	</id>
+		<property name="requestUuid"/>
+		<property name="fileName"/>
+		<property name="contentDesc"/>
+		<property name="filePath"/>
+	</class>
+</hibernate-mapping>

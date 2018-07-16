@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+  <description><![CDATA["javass"]]></description>
+  <display-name>"Javass Tags"</display-name>
+  <tlib-version>2.2</tlib-version>
+  <short-name>javass</short-name>
+  <uri>/javass-tags</uri>
+  <tag>
+    <description><![CDATA[Execute an action from within a view]]></description>
+    <name>myPage</name>
+    <tag-class>com.yhz.framework.web.MyPageTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+      <description><![CDATA[javass page tag]]></description>
+      <name>actionName</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <description><![CDATA[javass page tag]]></description>
+      <name>toList</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+</taglib>

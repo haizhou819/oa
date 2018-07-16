@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping >
+    <class name="com.yhz.oa.filemgr.sendfile.sendfilerequest.vo.SendFileRequestModel" table="tbl_SendFileRequest" lazy="true" dynamic-update="true" >
+    	<id name="uuid">
+    		<generator class="assigned"/>
+    	</id>
+		<property name="reqUser"/>
+		<property name="reqTime"/>
+		<property name="draftUser"/>
+		<property name="mainDep"/>
+		<property name="urgency"/>
+		<property name="securityLevel"/>
+		<property name="draftType"/>
+		<property name="title"/>
+		<property name="contentDesc"/>
+		<property name="fileNum"/>
+		<property name="printNums"/>
+		<property name="printer"/>
+		<property name="auditor"/>
+		<property name="state"/>
+		<property name="piId"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,68 @@
+
+/* ¡–±Ì±Í«© */
+#con {
+	margin:0 auto;
+	width:91%;
+}
+#tags {
+	padding:0;
+	margin-left:0;
+	margin-bottom:0 !important;
+	margin-bottom:-1px;
+	width: 500px;
+	height: 25px;
+}
+#tags li {
+	background: url(images/tagleft.gif) no-repeat left bottom;
+	float: left;
+	list-style-type: none;
+	height: 26px;
+}
+#tags li a {
+	padding:0 17px 0 10px;
+	background: url(images/tagright.gif) no-repeat right bottom;
+	float: left;
+	color: #666;
+	font-size:14px;
+	line-height: 26px;
+	height: 24px !important;
+	padding-top:2px !important;
+	height:26px;
+	padding-top:0px;
+	text-decoration: none
+}
+#tags li.emptytag {
+	background: none transparent scroll repeat 0% 0%;
+	width:4px;
+}
+#tags li.selecttag {
+	background-position: left top;
+	margin-bottom: -2px;
+	position: relative;
+	height: 26px
+}
+#tags li.selecttag a {
+	background-position: right top;
+	color:#28507B;
+	font-size:14px;
+	line-height:26px;
+	height: 24px !important;
+	padding-top:2px !important;
+	height:26px;
+	padding-top:0px;
+}
+#tagcontent {
+	border: #8AB4D7 1px solid;
+	padding: 4px;
+	background:#E5EEF6;
+}
+.tagcontent {
+	padding:15px 10px;
+	display: none;
+	background:#FFF;
+	width:98%;
+	color: #474747;
+}
+#tagcontent div.selecttag {
+	display: block
+}
